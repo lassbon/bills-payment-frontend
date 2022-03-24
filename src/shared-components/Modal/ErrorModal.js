@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from "react"
-import ReactDom from 'react-dom';
+import React, { useRef } from "react"
 import ErrorIcon from "../../assets/images/error.gif";
 import CloseModalIcon from "../../assets/svgs/CloseModalIcon";
-import { closeModalOnOutsideClick } from "../../utils/utils";
 import '../../assets/styles/custom.css'
 
 const ErrorModal = ({ title, subtitle, closeModalClick}) => {

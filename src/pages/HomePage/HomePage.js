@@ -1,9 +1,4 @@
-import { useState } from 'react'
 import img from '../../assets/images/bills.jpeg'
-import SuccessModal from '../../shared-components/Modal/SuccessModal'
-import Modal from '../../shared-components/Modal/SuccessModal'
-
-
 const HomePage = () => {
 
     // const [showModal, setShowModal] = useState(true)

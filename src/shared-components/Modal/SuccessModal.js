@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
 import TickIcon from "../../assets/images/tick.gif";
 import CloseModalIcon from "../../assets/svgs/CloseModalIcon";
-import { closeModalOnOutsideClick } from "../../utils/utils";
 import '../../assets/styles/custom.css'
 
 const SuccessModal = ({ title, subtitle, closeModalClick }) => {

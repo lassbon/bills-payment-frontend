@@ -1,54 +1,47 @@
-import  { useEffect , useState} from "react";
-// import Loading from "shared-components/Loading";
-// import CloseModalIcon from "shared-components/svgs/CloseModalIcon";
-// import { closeModalOnOutsideClick } from "utils"
+import  { useEffect, useState} from "react"
 import ReactCodeInput from "react-code-input";
 import Button from '../../../shared-components/Button/PrimarySmallButton'
 import { verifyOTP } from '../../../services/api'
-import ErrorModal from "../../../shared-components/Modal/ErrorModal";
 import { useNavigate } from 'react-router-dom'
-import SuccessModal from "../../../shared-components/Modal/SuccessModal";
-
+import { toast } from "react-toastify"
 
 const VerifyOtp = () => { 
 
     const Redirect = useNavigate()
  
-    const [error, setError] = useState(false)
-    const [success, setSuccess] = useState(false)
-    const [errorMsg, setErrorMsg] = useState("")
-    const [successMsg, setSuccessMsg] = useState("")
     const [otp, setOtp] = useState("")
     const userEmail = localStorage.getItem("email")
 
-   
+    useEffect(() => {
+        document.title = "Billspayment - Verify OTP";
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
 
     async function onVerify(e) {
         e.preventDefault()
 
         try {
             const response = await verifyOTP(userEmail, otp)
-
+            
             if (response.data.status === false) {
-                setError(true)
-                setErrorMsg(response.data.message)
+                console.log("here: ", response.data)
+                toast.error(response.data.message || "An error occurred")
                 return 
               
             } 
 
-            setSuccess(true)
-            setSuccessMsg(response.data.message)
+            toast.success(`🦄 ${response.data.message}` || "Account successfully created")
             
             Redirect("/login")
     
 
         } catch (error) {
-            setError(true)
 
             if (error.toJSON().message === 'Network Error') {
-                setErrorMsg("There seems to be internet error'")
+                toast.warn("😱There seems to be internet error")
             }
-             setErrorMsg("There seems to be internet error'")
+            console.log("here: ", error.response.data)
+               toast.error(error.response.data.message || "An error occured")
         }
         
     
@@ -59,8 +52,6 @@ const VerifyOtp = () => {
 
     return (
             <>
-            {error && <ErrorModal subtitle={errorMsg} />}
-            { success && <SuccessModal subtitle={errorMsg} /> }
         
                 <form className="flex flex-col items-center mt-48 border-1 w-1/2 rounded bg-slate-200 mx-auto">
                     <fieldset className="my-20 is-six--code ">

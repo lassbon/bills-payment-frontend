@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import ErrorModal from './shared-components/Modal/ErrorModal'
-import ResendOtp from '../src/pages/Auth/VerifyOtp/VerifyOtp'
-import Test from '../src/pages/Test/Test'
+import reportWebVitals from './reportWebVitals'
 
 
 ReactDOM.render(

@@ -1,19 +1,13 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import loginImg from '../../../assets/images/login.png'
 import PrimarySolidButton from '../../../shared-components/Button/PrimarySolidButton'
 import PrimaryFormField from '../../../shared-components/Form/PrimaryFormField'
-import Container from '../../Container'
 import SignUpImg from '../../../assets/images/hero-image-animation.gif'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import ErrorModal from '../../../shared-components/Modal/ErrorModal'
-import * as Yup from "yup"
 // import { ErrorMessage, Field, Form, Formik } from "formik"
-import SendOTP from '../../../pages/Auth/VerifyOtp/VerifyOtp'
 import { createNewUser } from '../../../services/api'
-import { FastField } from 'formik'
+import { toast } from 'react-toastify'
 
 const Signup = () => {
 
@@ -26,28 +20,32 @@ const Signup = () => {
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [error, setError] = useState(false)
-    const [errorMsg, setErrorMsg] = useState("")
+    const [loading, setLoading] = useState(false)
 
+    useEffect(() => {
+        document.title = "Billspayment - Signup";
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    
     async function onSubmit(e) {
         e.preventDefault()
 
 
         try {
             let data = {
-                firstname: firstname,
+                          firstname: firstname,
                           surname: lastname,
                           email: email,
                           phone: phone,
                           password: password
                             
                         }
-        
+            setLoading(true)
             const response = await createNewUser(data)
 
             if (response.data.status === false) {
-                setError(true)
-                setErrorMsg(response.data.message)
+                setLoading(false)
+                toast.error(response.data.message || "An error occurred")
                 return 
               
             } 
@@ -55,12 +53,14 @@ const Signup = () => {
             Redirect("/send-otp")
 
         } catch (error) {
-            setError(true)
+            setLoading(false)
 
             if (error.toJSON().message === 'Network Error') {
-                setErrorMsg("There seems to be internet error'")
+                toast.warn("😱There seems to be internet error")
+
             }
-             setErrorMsg("There seems to be internet error'")
+            toast.warn("😱There seems to be internet error")
+
         }
         
     
@@ -69,7 +69,6 @@ const Signup = () => {
 
     return (
         <>
-             { error && <ErrorModal subtitle={errorMsg} />}
             
             <div className='grid sm:grid-rows-1 md:grid-cols-2  h-screen items-center '>
              
@@ -88,7 +87,7 @@ const Signup = () => {
                         
                         </div>
                         <form onSubmit={onSubmit}>
-                            <div>{error}</div>
+                            
                                 <div >
                                     <label htmlFor="firstname" className="sr-only">Firstname</label>
                                     <PrimaryFormField type="text" placeholder="Enter firstname" onChange={(e) => setFirstname(e.target.value)} value={firstname}  />
@@ -116,7 +115,7 @@ const Signup = () => {
                                 
                     
                         
-                        <div> <PrimarySolidButton text="Sign up" type="submit" /> </div>
+                            <div> <PrimarySolidButton text={loading ? "Signing you up" : "Sign up"} type="submit" action={loading ? true : false} /> </div>
                         </form>
                     </div>      
                 </div>

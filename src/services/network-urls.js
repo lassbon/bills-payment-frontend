@@ -1,6 +1,3 @@
-import { getDefaultNormalizer } from '@testing-library/react'
-import axios from 'axios'
-
 
 //AUTH URL
 export const createUserURL = '/user/create'
