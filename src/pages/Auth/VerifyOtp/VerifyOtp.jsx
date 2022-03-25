@@ -1,8 +1,8 @@
 import  { useEffect, useState} from "react"
 import ReactCodeInput from "react-code-input";
 import Button from '../../../shared-components/Button/PrimarySmallButton'
-import { verifyOTP } from '../../../services/api'
-import { useNavigate } from 'react-router-dom'
+import { verifyOTP, resendOtp } from '../../../services/api'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify"
 import '../../../assets/styles/verify_otp.css'
 
@@ -12,10 +12,13 @@ const VerifyOtp = () => {
  
     const [otp, setOtp] = useState("")
     const userEmail = localStorage.getItem("email")
+    const userPhone = localStorage.getItem("phone")
 
     useEffect(() => {
         document.title = "Billspayment - Verify OTP"
-      }, []);
+
+    }, []);
+    
 
     async function onVerify(e) {
         e.preventDefault()
@@ -24,7 +27,7 @@ const VerifyOtp = () => {
             const response = await verifyOTP(userEmail, otp)
             
             if (response.data.status === false) {
-                console.log("here: ", response.data)
+            
                 toast.error(response.data.message || "An error occurred")
                 return 
               
@@ -38,7 +41,7 @@ const VerifyOtp = () => {
         } catch (error) {
 
             if (error.toJSON().message === 'Network Error') {
-                toast.warn("😱There seems to be internet error")
+                toast.warn("😱There seems to be internet error ")
             }
             console.log("here: ", error.response.data)
                toast.error(error.response.data.message || "An error occured")
@@ -46,6 +49,21 @@ const VerifyOtp = () => {
         
     
        
+    }
+
+    async function resendUserOtp() {
+        
+        const response = await resendOtp(userPhone)
+            
+            if (response.data.status === false) {
+            
+                toast.error(response.data.message || "An error occurred")
+                return 
+              
+            } 
+
+            toast.success(`🦄 ${response.data.message}` || "OTP resent successfully")
+            
     }
 
 
@@ -76,16 +94,9 @@ const VerifyOtp = () => {
                     </div>
 
                     <div className="mt-8 ">
-                        <p className="text-sm text-gray-500">
-                        Did not receive an SMS?{" "}
-                        <a
-                            className="text-wb-primary"
-                            href="/"
-                            onClick={() => null}
-                        >
-                            Resend OTP
-                        </a>
-                        </p>
+                    <p className="text-sm text-gray-500">  Did not receive an SMS? &nbsp;
+                        <span onClick={resendUserOtp} style={{cursor: "pointer"}}>Resend OTP</span>
+                    </p>
                     </div><br /><br />
                 </form>
             </>

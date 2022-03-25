@@ -1,11 +1,12 @@
 
 
-const PrimaryFormField = ({type, placeholder, onChange}) => {
+const PrimaryFormField = ({type, placeholder, onChange, value}) => {
 
     return (
         <input
             type={type || "text"}
             required
+            value={value}
             className="appearance-none rounded-none relative block w-full
              px-3 py-4 border border-gray-300 placeholder-gray-500
              text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500

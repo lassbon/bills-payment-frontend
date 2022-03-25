@@ -1,4 +1,4 @@
-const PrimarySolidButton = ({text, type, onClick, disabled, action}) => {
+const PrimarySolidButton = ({text, type, onClick,  disabled, action}) => {
 
     return (
        

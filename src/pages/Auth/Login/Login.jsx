@@ -40,7 +40,7 @@ const Login = () => {
                         </div>
 
                         <div className="text-sm">
-                                <Link to="forget-password"
+                                <Link to="/start-forget-password"
                                     className="font-medium 
                                     text-indigo-600
                                     hover:text-indigo-500">

@@ -15,8 +15,7 @@
 }
 
 .Toastify__toast--success {
-  background-color: #48bb78;
-  color:#fff
+  border:1px solid #48bb78;
 }
 
 .Toastify__toast--warning {
