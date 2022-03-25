@@ -4,6 +4,7 @@ import Button from '../../../shared-components/Button/PrimarySmallButton'
 import { verifyOTP } from '../../../services/api'
 import { useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify"
+import '../../../assets/styles/verify_otp.css'
 
 const VerifyOtp = () => { 
 
@@ -13,8 +14,7 @@ const VerifyOtp = () => {
     const userEmail = localStorage.getItem("email")
 
     useEffect(() => {
-        document.title = "Billspayment - Verify OTP";
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        document.title = "Billspayment - Verify OTP"
       }, []);
 
     async function onVerify(e) {
@@ -55,7 +55,8 @@ const VerifyOtp = () => {
         
                 <form className="flex flex-col items-center mt-48 border-1 w-1/2 rounded bg-slate-200 mx-auto">
                     <fieldset className="my-20 is-six--code ">
-                        <ReactCodeInput
+                    <ReactCodeInput
+                        className="otp-fieldset self-center space-x-5"
                             type="text"
                             name="number"
                             placeholder="*"
