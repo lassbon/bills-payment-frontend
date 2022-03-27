@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'
+import PurchasesCard from '.././src/pages/Purchases/PurchasesCard'
+import Purchases from '.././src/pages/Purchases/Purchases'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Purchases/>
   </React.StrictMode>,
   document.getElementById('root')
 );

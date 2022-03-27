@@ -10,12 +10,12 @@ const HomePage = () => {
     
     return (
         <>
-            <div className="flex">
+            <div classNameName="flex">
                 
-              <div><img src={img} alt="Bills Payment" className='max-h-screen blur-sm' /></div>
+              <div><img src={img} alt="Bills Payment" classNameName='max-h-screen blur-sm' /></div>
                 <div>
-                    <p className=''>
-                        <button className='btn bg-purple-800 p-3 rounded text-white justify-center items-center '
+                    <p classNameName=''>
+                        <button classNameName='btn bg-purple-800 p-3 rounded text-white justify-center items-center '
                              > Get Started </button>
        
                     </p>

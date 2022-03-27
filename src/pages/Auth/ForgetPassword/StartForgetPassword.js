@@ -26,15 +26,15 @@ const StartForgetPassword = () => {
     }
 
     return (
-        <div className="flex flex-col items-center mt-48 border-1 w-3/4 rounded bg-slate-200 mx-auto">
-            <h1 className="text-3xl text-blue-800 mt-4">Reset Password</h1>
-            <form className="mt-4 space-y-6 mb-12">
-                <div className="rounded-md shadow-sm -space-y-px">
+        <div classNameName="flex flex-col items-center mt-48 border-1 w-3/4 rounded bg-slate-200 mx-auto">
+            <h1 classNameName="text-3xl text-blue-800 mt-4">Reset Password</h1>
+            <form classNameName="mt-4 space-y-6 mb-12">
+                <div classNameName="rounded-md shadow-sm -space-y-px">
                     <div >
-                    <label htmlFor="forget-password" className="sr-only">Forget Password</label>
+                    <label htmlFor="forget-password" classNameName="sr-only">Forget Password</label>
                         <PrimaryFormField type="email" placeholder="Enter your email" onChange={(e)=> setEmail(e.target.value)} value={email} />
                     </div><br />
-                    <div className="mt-16">
+                    <div classNameName="mt-16">
                         <PrimarySolidButton text="Reset Password" type="button" onClick={startUserForgetPassword} action={loading} />
                         
                     </div>
