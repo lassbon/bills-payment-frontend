@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import './assets/styles/toastify.css'
 import StartForgetPassword from './pages/Auth/ForgetPassword/StartForgetPassword'
 import CompleteForgetPassword from './pages/Auth/ForgetPassword/CompletedForgetPassword'
+import Dashboard  from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -22,14 +23,15 @@ function App() {
         />
           <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />    
-          <Route path="/send-otp" element={<SendOTP />} />  
-          <Route path="/start-forget-password" element={<StartForgetPassword />} />
-          <Route path="/complete-forget-password/:hash" element={<CompleteForgetPassword />} />
-          <Route path="*" element={<HomePage />} />
-          </Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth/login" element={<Login />} />
+            <Route path="/auth/signup" element={<Signup />} />    
+            <Route path="/auth/send-otp" element={<SendOTP />} />  
+            <Route path="/auth/start-forget-password" element={<StartForgetPassword />} />
+            <Route path="/auth/complete-forget-password/:hash" element={<CompleteForgetPassword />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<HomePage />} />
+        </Routes>
 
           </BrowserRouter>
     </>

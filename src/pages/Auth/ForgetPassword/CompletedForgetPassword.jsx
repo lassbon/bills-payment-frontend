@@ -19,17 +19,24 @@ const CompleteForgetPassword = ()=> {
     async function userCompletePassword() {
         
         setLoading(true)
-        const response = await API_CompleteForgetPassword(newPassword, confirmPassword, hash)
+        try {
+            const response = await API_CompleteForgetPassword(newPassword, confirmPassword, hash)
+            console.log("response: ", JSON.stringify(response))
             if (response.data.status === false) {
                 setLoading(false)
                 toast.error(response.data.message || "An error occurred")
-                return 
+                return
               
-            } 
+            }
         
             setLoading(false)
             toast.success(`🦄 ${response.data.message}` || "Reset Password successfully done")
-            Redirect('/login')
+            Redirect('/auth/login')
+        } catch (error) {
+            setLoading(false)
+            toast.error(error.response.data.message || "An error occurred")
+            return
+        }
            
     }
 

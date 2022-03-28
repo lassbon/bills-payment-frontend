@@ -35,7 +35,7 @@ const VerifyOtp = () => {
 
             toast.success(`🦄 ${response.data.message}` || "Account successfully created")
             
-            Redirect("/login")
+            Redirect("/auth/login")
     
 
         } catch (error) {
@@ -52,18 +52,27 @@ const VerifyOtp = () => {
     }
 
     async function resendUserOtp() {
-        
-        const response = await resendOtp(userPhone)
+       
+        try {
+            const response = await resendOtp(userPhone)
             
             if (response.data.status === false) {
             
                 toast.error(response.data.message || "An error occurred")
-                return 
+                return
               
-            } 
+            }
 
             toast.success(`🦄 ${response.data.message}` || "OTP resent successfully")
+        } catch (error) {
+            if (error.toJSON().message === 'Network Error') {
+                toast.warn("😱There seems to be internet error ")
+            }
+            console.log("here: ", error.response.data)
+               toast.error(error.response.data.message || "An error occured")
+       
             
+        } 
     }
 
 

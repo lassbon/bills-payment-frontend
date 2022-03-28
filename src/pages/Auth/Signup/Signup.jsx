@@ -51,7 +51,7 @@ const Signup = () => {
             } 
             localStorage.setItem("email", email)
             localStorage.setItem("phone", phone)
-            Redirect("/send-otp")
+            Redirect("/auth/send-otp")
 
         } catch (error) {
             setLoading(false)
@@ -82,9 +82,8 @@ const Signup = () => {
                 <div className=" bg-slate-100 min-h-full flex items-center justify-center py-12 px-12 sm:px-6 lg:px-8">
                     <div className="max-w-md w-full space-y-8">
                         <div>
-                        {/* <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" /> */}
-                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2> <br />
-                            <p className="text-center" > Already registered ?  Login<Link to="/login" className='text-blue underline'> here</Link> </p>
+                          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2> <br />
+                            <p className="text-center" > Already registered ?  Login<Link to="/auth/login" className='text-blue underline'> here</Link> </p>
                         
                         </div>
                         <form onSubmit={onSubmit}>
@@ -116,7 +115,7 @@ const Signup = () => {
                                 
                     
                         
-                            <div> <PrimarySolidButton text={loading ? "Signing you up" : "Sign up"} type="submit" action={loading ? true : false} /> </div>
+                            <div> <PrimarySolidButton text={loading ? "Signing you up" : "Sign up"} type="submit" action={loading} /> </div>
                         </form>
                     </div>      
                 </div>

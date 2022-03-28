@@ -1,12 +1,44 @@
-import { Link } from 'react-router-dom'
+
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import loginImg from '../../../assets/images/login-img.webp'
 import Button from '../../../shared-components/Button/PrimarySolidButton'
 import PrimaryFormField from '../../../shared-components/Form/PrimaryFormField'
-import Container from '../../Container'
+import { API_Login } from '../../../services/api'
+
 const Login = () => {
 
+    const Redirect = useNavigate()
 
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [loading , setLoading] = useState(false)
+    
+  
 
+    async function handleLogin() {
+       
+        try {
+            setLoading(true)
+            const response = await API_Login(email, password)
+
+            if (response.data.status === false) {
+                return toast.error( "11111..Login failed")   
+            }
+           
+            localStorage.setItem("token", response.headers['token'])
+            toast.success(response.data.message || "You have successfully logged in")
+            setLoading(false)
+            Redirect("/dashboard")
+
+     
+        } catch (err) {
+            setLoading(false)
+            console.log(err)
+           toast.error(err.response.data.message)
+       }
+    }
 
 
 
@@ -25,11 +57,11 @@ const Login = () => {
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
                         <label htmlFor="email-address" className="sr-only">Email address</label>
-                            <PrimaryFormField type="email" placeholder="Email address"  />
+                            <PrimaryFormField type="email" placeholder="Email address"  onChange={(e) => setEmail(e.target.value)} />
                         </div><br />
                         <div>
                             <label htmlFor="password" className="sr-only">Password</label>
-                            <PrimaryFormField type="password" placeholder="Password" />
+                            <PrimaryFormField type="password" placeholder="Password"  onChange={(e)=> setPassword(e.target.value)}/>
                         </div>
                     </div>
 
@@ -40,7 +72,7 @@ const Login = () => {
                         </div>
 
                         <div className="text-sm">
-                                <Link to="/start-forget-password"
+                                <Link to="/auth/start-forget-password"
                                     className="font-medium 
                                     text-indigo-600
                                     hover:text-indigo-500">
@@ -50,11 +82,11 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <Button text="Sign In" type="button"  />
+                        <Button text={loading ? "Logging in..." : "Login"} type="button"  onClick={handleLogin} action={loading} />
                         
                     </div>
                     </form><br />
-                    <p className="text-center"> Dont have an account ?  <Link to="/signup">Register </Link> </p>
+                    <p className="text-center"> Dont have an account ?  <Link to="/auth/signup">Register </Link> </p>
                 </div>      
                 </div>
                 <div className='sm:hidden md:block '>
