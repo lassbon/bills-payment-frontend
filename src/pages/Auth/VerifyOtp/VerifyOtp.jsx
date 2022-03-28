@@ -80,10 +80,10 @@ const VerifyOtp = () => {
     return (
             <>
         
-                <form className="flex flex-col items-center mt-48 border-1 w-1/2 rounded bg-slate-200 mx-auto">
-                    <fieldset className="my-20 is-six--code ">
+                <form classNameName="flex flex-col items-center mt-48 border-1 w-1/2 rounded bg-slate-200 mx-auto">
+                    <fieldset classNameName="my-20 is-six--code ">
                     <ReactCodeInput
-                        className="otp-fieldset self-center space-x-5"
+                        classNameName="otp-fieldset self-center space-x-5"
                             type="text"
                             name="number"
                             placeholder="*"
@@ -93,17 +93,17 @@ const VerifyOtp = () => {
                         />
                     </fieldset>
 
-                    <div className="nav-buttons flex justify-center">
+                    <div classNameName="nav-buttons flex justify-center">
                 
                         <Button text="Verify OTP" type="submit" onClick={onVerify} />
                         {/* <button
                             type="submit"
-                            className="w-40 text-center leading-loose bg-indigo-600  text-white rounded-sm" > Confirm
+                            classNameName="w-40 text-center leading-loose bg-indigo-600  text-white rounded-sm" > Confirm
                         </button> */}
                     </div>
 
-                    <div className="mt-8 ">
-                    <p className="text-sm text-gray-500">  Did not receive an SMS? &nbsp;
+                    <div classNameName="mt-8 ">
+                    <p classNameName="text-sm text-gray-500">  Did not receive an SMS? &nbsp;
                         <span onClick={resendUserOtp} style={{cursor: "pointer"}}>Resend OTP</span>
                     </p>
                     </div><br /><br />

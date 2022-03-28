@@ -71,16 +71,16 @@ const Signup = () => {
     return (
         <>
             
-            <div className='grid sm:grid-rows-1 md:grid-cols-2  h-screen items-center '>
+            <div classNameName='grid sm:grid-rows-1 md:grid-cols-2  h-screen items-center '>
              
-                <div className="min-h-full sm:hidden md:block sm:px-6 flex items-center justify-center py-12 px-12 lg:px-8 ">
-                <br /> <p className='text-3xl text-center '>BillsPayment made Easy...</p>
-                    <br /><br /><div><img src={SignUpImg} alt="Signup today" className='w-full sm:hidden md:block' /> </div>
+                <div classNameName="min-h-full sm:hidden md:block sm:px-6 flex items-center justify-center py-12 px-12 lg:px-8 ">
+                <br /> <p classNameName='text-3xl text-center '>BillsPayment made Easy...</p>
+                    <br /><br /><div><img src={SignUpImg} alt="Signup today" classNameName='w-full sm:hidden md:block' /> </div>
                 
                 </div>
                 
-                <div className=" bg-slate-100 min-h-full flex items-center justify-center py-12 px-12 sm:px-6 lg:px-8">
-                    <div className="max-w-md w-full space-y-8">
+                <div classNameName=" bg-slate-100 min-h-full flex items-center justify-center py-12 px-12 sm:px-6 lg:px-8">
+                    <div classNameName="max-w-md w-full space-y-8">
                         <div>
                           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2> <br />
                             <p className="text-center" > Already registered ?  Login<Link to="/auth/login" className='text-blue underline'> here</Link> </p>
@@ -89,27 +89,27 @@ const Signup = () => {
                         <form onSubmit={onSubmit}>
                             
                                 <div >
-                                    <label htmlFor="firstname" className="sr-only">Firstname</label>
+                                    <label htmlFor="firstname" classNameName="sr-only">Firstname</label>
                                     <PrimaryFormField type="text" placeholder="Enter firstname" onChange={(e) => setFirstname(e.target.value)} value={firstname}  />
                                 </div><br />
                                 <div>
-                                <label htmlFor="othernames" className="sr-only">Othername</label>
+                                <label htmlFor="othernames" classNameName="sr-only">Othername</label>
                                 <PrimaryFormField type="text" placeholder="Enter lastname" onChange={(e) => setLastname(e.target.value)} value={lastname} />
                                 </div><br />
                                 <div>
-                                <label htmlFor="email-address" className="sr-only">Phone</label>
+                                <label htmlFor="email-address" classNameName="sr-only">Phone</label>
                                     <PrimaryFormField type="text" placeholder="Enter Phone"  onChange={(e) => setPhone(e.target.value)} value={phone}  />
                                 </div><br />
                                 <div>
-                                    <label htmlFor="email-address" className="sr-only">Email address</label>
+                                    <label htmlFor="email-address" classNameName="sr-only">Email address</label>
                                     <PrimaryFormField type="email" placeholder="Email address"  onChange={(e) => setEmail(e.target.value)} />
                                 </div><br />
                                 <div>
-                                    <label htmlFor="password" className="sr-only">Password</label>
+                                    <label htmlFor="password" classNameName="sr-only">Password</label>
                                     <PrimaryFormField type="password" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} />
                                 </div><br />
                                 <div>
-                                    <label htmlFor="confirm-password" className="sr-only">Confirm Password </label>
+                                    <label htmlFor="confirm-password" classNameName="sr-only">Confirm Password </label>
                                     <PrimaryFormField type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
                                 </div><br />
                                 

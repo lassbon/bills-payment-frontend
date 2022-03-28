@@ -19,7 +19,7 @@ function App() {
               autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
-              toastClassName="px-2 shadow-sm bg-green-400 rounded-md text-sm"
+              toastclassNameName="px-2 shadow-sm bg-green-400 rounded-md text-sm"
         />
           <BrowserRouter>
         <Routes>
