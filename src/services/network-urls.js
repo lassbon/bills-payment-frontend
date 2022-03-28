@@ -8,3 +8,4 @@ export const StartForgetPasswordURL = (email) => {  return `/start-forget-passwo
 export const CompleteForgetPasswordURL = (hash) => { return `/complete-forget-password/${hash}` }
 export const loginURl = () => { return '/login' }
 export const userDetailsURL = () => { return '/user' }
+export const billsCategoriesURL = () => { return '/bills-payment/categories'}

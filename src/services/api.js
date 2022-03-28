@@ -1,5 +1,8 @@
 import axios from 'axios'
-import { createUserURL, verifyOTPURL, resendOtpURL, StartForgetPasswordURL, CompleteForgetPasswordURL , loginURl, userDetailsURL}
+import {
+    createUserURL, verifyOTPURL, resendOtpURL, StartForgetPasswordURL,
+    CompleteForgetPasswordURL, loginURl, userDetailsURL, billsCategoriesURL
+}
     from './network-urls'
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL
@@ -47,6 +50,20 @@ export const API_Login = (email, password) => {
 
 export const API_UserDetails = (token) => {
     const url_ = userDetailsURL() 
+    return axios({
+        method: 'get',
+        url: `${baseUrl}${url_}`,
+        headers: {
+            "Content-Type": "application/json",
+            "token": `Bearer ${token}`
+        },
+    
+    })
+}
+
+
+export const API_BillsCategory = (token) => {
+    const url_ = billsCategoriesURL() 
     return axios({
         method: 'get',
         url: `${baseUrl}${url_}`,

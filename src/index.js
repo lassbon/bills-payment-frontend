@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals'
 import PurchasesCard from '.././src/pages/Purchases/PurchasesCard'
 import Purchases from '.././src/pages/Purchases/Purchases'
+import Loading from './shared-components/Loader/Loading'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Purchases/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

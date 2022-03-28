@@ -9,7 +9,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import './assets/styles/toastify.css'
 import StartForgetPassword from './pages/Auth/ForgetPassword/StartForgetPassword'
 import CompleteForgetPassword from './pages/Auth/ForgetPassword/CompletedForgetPassword'
-import Dashboard  from './pages/Dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import BillsCategories from './pages/Purchases/Purchases'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/auth/start-forget-password" element={<StartForgetPassword />} />
             <Route path="/auth/complete-forget-password/:hash" element={<CompleteForgetPassword />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/bills-category" element={<BillsCategories />} />
             <Route path="*" element={<HomePage />} />
         </Routes>
 
