@@ -14,18 +14,22 @@ import BillsCategories from './pages/Purchases/Purchases'
 
 function App() {
   return (
-    <>            
+    <>   
+        
         <ToastContainer
               position="top-right"
               autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
-              toastclassNameName="px-2 shadow-sm bg-green-400 rounded-md text-sm"
-        />
-          <BrowserRouter>
+              toastclassName="px-2 shadow-sm bg-green-400 rounded-md text-sm"
+      />
+
+      
+        <BrowserRouter>
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/auth/login" element={<Login />} />
+          
+            <Route  path="/" element={<HomePage />} />
+            <Route  path="/auth/login" element={<Login />} />
             <Route path="/auth/signup" element={<Signup />} />    
             <Route path="/auth/send-otp" element={<SendOTP />} />  
             <Route path="/auth/start-forget-password" element={<StartForgetPassword />} />

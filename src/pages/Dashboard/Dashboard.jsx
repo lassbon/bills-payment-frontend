@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import Container from "../../pages/Container"
 import { API_UserDetails } from '../../services/api'
 import { toast } from "react-toastify"
 

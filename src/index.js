@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import './index.css';
+import ReactTooltip from 'react-tooltip';
+import './App.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'
-import PurchasesCard from '.././src/pages/Purchases/PurchasesCard'
-import Purchases from '.././src/pages/Purchases/Purchases'
-import Loading from './shared-components/Loader/Loading'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode> 
     <App/>
   </React.StrictMode>,
   document.getElementById('root')

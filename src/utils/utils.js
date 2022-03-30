@@ -41,7 +41,7 @@ export const closeModalOnOutsideClick = (callback) => {
       (element) => {
         if (
           (!element.contains(e.target) && isVisible(element)) ||
-          e.target.classNameName === "closeModal"
+          e.target.className === "closeModal"
         ) {
           callback();
         }

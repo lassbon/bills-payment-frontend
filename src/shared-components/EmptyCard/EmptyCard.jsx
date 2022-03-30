@@ -4,12 +4,12 @@ import '../../assets/styles/custom.css'
 
 const EmptyCard = (props) => {
   return (
-    <div classNameName="empty-card--items">
+    <div className="empty-card--items">
       <div
-        classNameName="empty-illustration"
+        className="empty-illustration"
         dangerouslySetInnerHTML={{ __html: emptyIcon }}
       />
-      <div classNameName="empty-text">
+      <div className="empty-text">
         <h1>{props.title || "Welcome"}</h1>
         <p>{props.message || "Nothing to see"}</p>
       </div>
