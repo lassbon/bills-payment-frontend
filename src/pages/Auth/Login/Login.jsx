@@ -24,18 +24,18 @@ const Login = () => {
             const response = await API_Login(email, password)
 
             if (response.data.status === false) {
-                return toast.error( "11111..Login failed")   
+                return toast.error("Login failed")   
             }
            
             localStorage.setItem("token", response.headers['token'])
             toast.success(response.data.message || "You have successfully logged in")
             setLoading(false)
-            Redirect("/dashboard")
+            Redirect("/user/dashboard")
 
      
         } catch (err) {
             setLoading(false)
-            console.log(err)
+            console.log(err.response.data.message)
            toast.error(err.response.data.message)
        }
     }

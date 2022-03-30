@@ -34,7 +34,7 @@ function App() {
             <Route path="/auth/send-otp" element={<SendOTP />} />  
             <Route path="/auth/start-forget-password" element={<StartForgetPassword />} />
             <Route path="/auth/complete-forget-password/:hash" element={<CompleteForgetPassword />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/user/dashboard" element={<Dashboard />} />
             <Route path="/bills-category" element={<BillsCategories />} />
             <Route path="*" element={<HomePage />} />
         </Routes>

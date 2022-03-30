@@ -17,12 +17,12 @@ const Dashboard = () => {
                 toast.error(response.data.message || "An error occurred")
                 return
             }
-
+            localStorage.setItem("userDetails", JSON.stringify(response.data.data))
             setUserDetails(response.data.data)
 
         })()
 
-    })
+    }, [])
 
     return (
 
@@ -33,7 +33,7 @@ const Dashboard = () => {
                         <div className="">
                             {JSON.stringify(userDetails)}
                             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                                Welcome {userDetails[0].firstname} {userDetails[0].surname}
+                                { `Welcome ${userDetails[0].firstname} ${userDetails[0].surname} `}
 
                             </h2>
                         </div>

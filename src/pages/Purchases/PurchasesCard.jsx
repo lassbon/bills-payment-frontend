@@ -2,13 +2,35 @@ import { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import PurchasesModal from '../../shared-components/Modal/PurchasesModal';
 import PrimaryFormField from '../../shared-components/Form/PrimaryFormField';
-    
+import { usePaystackPayment, PaystackButton } from 'react-paystack'
+
 const PurchasesCard = ({ data, handleClick }) => {
 
+
+
+    const userDetailsJSON = JSON.parse(localStorage.getItem("userDetails")) ?? []
     const [showModal, setShowModal] = useState(false)
+    const [amount, setAmount] = useState(0)
+    const [phone, setPhone] = useState("")
+    const [email, setEmail] = useState(userDetailsJSON[0].email)
+    const [name, setName] = useState(userDetailsJSON[0].firstname)
+
+    const componentProps = {
+        email: email,
+        amount: amount*100,
+        publicKey: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY
+    }
+    
+    const initializePayment = usePaystackPayment(componentProps)
+     
+    function handlePurchases() {
+        
+        setShowModal(false) 
+        initializePayment()
+    }
+
    return (
         <>
-        
             <ReactTooltip />  
             <div
                 onClick={() => { setShowModal(true) }}
@@ -50,17 +72,18 @@ const PurchasesCard = ({ data, handleClick }) => {
                         <div className="relative p-6 flex-auto">
                         <p className="my-4 text-slate-500 text-lg leading-relaxed"> {data.name}</p>
                             <form>
-                                       
-                                <PrimaryFormField type="text"  placeholder="Phone"  /><br />
-                                {data.data ? 
-                                    <select>
+                        
+                                <PrimaryFormField type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Email"  defaultValue={email} /><br />    
+                                <PrimaryFormField type="text"  onChange={(e)=> setPhone(e.target.value)}  placeholder="Phone"  /><br />
+                                {data.data || data.bundle ? 
+                                    <select onChange={(e) => setAmount(e.target.value)}>
                                        <option value="">Select a plan</option>
-                                       {Object.entries(data.fixedAmountsDescriptions).map(([key,value])  =>  <option>₦{key} - {value}</option>) }
+                                       {Object.entries(data.fixedAmountsDescriptions).map(([key,value])  =>  <option value={key}> ₦{key} - {value}</option>) }
                                     </select>
                                
-                               :  <PrimaryFormField type="number" min={data.minAmount} max={ data.maxAmount} placeholder="Amount"  />
+                               :  <PrimaryFormField type="number" min={data.minAmount} max={ data.maxAmount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount"  />
                             }<br />
-                            {  data.bundle ? <PrimaryFormField type="text" placeholder="Bundle " />  : null }
+                            
                                        
                             </form>
                         
@@ -74,13 +97,15 @@ const PurchasesCard = ({ data, handleClick }) => {
                         <button
                             className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
-                            onClick={() => { setShowModal(false) }}
-                          >Purchase { data.data ? "Data" : "Airtime"}</button>
+                            onClick={handlePurchases}
+                                   >Purchase {data.data ? "Data" : "Airtime"}</button>
                         </div>
                     </div>
-                    </div>
+                       </div>
+                
                 </div>
-                 <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                   <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                   
             </>
           
                : null}
